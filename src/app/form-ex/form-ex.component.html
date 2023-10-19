@@ -1,4 +1,5 @@
 <form [formGroup]="productForm">
+
     <div class="form-group">
         <label>Name</label>
         <input #nameCode formControlName="name" (change)="setNamee(nameCode.value)" >
@@ -11,18 +12,28 @@
             </ul>
         </div>
     </div>
+
     <div>
         <label>Desc</label>
         <input #descCode formControlName="desc">
     </div>
+
     <div>
         <label>imgUrl</label>
         <input #imgUrlCode formControlName="imgUrl">
+        <div *ngIf="(imgUrl?.touched||name?.dirty) && imgUrl?.invalid" class="alert alert-danger">
+            <ul>
+                <li *ngIf="imgUrl?.errors?.['required']">imgUrl is required</li>
+                <li *ngIf="imgUrl?.errors?.['wrongExtension']">imgUrl (XXX.png, XXX.jpg, XXX.jpeg)</li>
+            </ul>
+        </div>
     </div>
+
     <div>
         <label>price</label>
         <input #priceCode formControlName="price">
     </div>
+
     <button [disabled]="!productForm.valid" (click)="onSubmit()">Submit</button>
     <!--<button (click)="update()">update</button>-->
 </form>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ImageValidator } from '../img.validator';
 
 @Component({
   selector: 'form-ex',
@@ -12,7 +13,7 @@ export class FormExComponent {
 
     name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
     desc: new FormControl('', Validators.required),
-    imgUrl: new FormControl('', Validators.required),
+    imgUrl: new FormControl('', [Validators.required, ImageValidator.isValidExtension]),
     price: new FormControl('', Validators.required),
 
   });
@@ -20,6 +21,9 @@ export class FormExComponent {
 
   get name(){
     return this.productForm.get('name');
+  }
+  get imgUrl(){
+    return this.productForm.get('imgUrl');
   }
   setNamee(inputt: string) {
     this.namee = inputt;
