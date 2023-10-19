@@ -1,0 +1,23 @@
+
+<p>{{namee}}</p>
+
+<form>
+    <div>
+        <label>Name</label>
+        <input #nameCode required [formControl]="name" (change)="setNamee(nameCode.value)">
+    </div>
+    <div>
+        <label>Desc</label>
+        <input #descCode required [formControl]="desc">
+    </div>
+    <div>
+        <label>imgUrl</label>
+        <input #imgUrlCode required [formControl]="imgUrl">
+    </div>
+    <div>
+        <label>price</label>
+        <input #priceCode required [formControl]="price">
+    </div>
+</form>
+
+
