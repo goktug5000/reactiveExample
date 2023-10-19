@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'form-ex',
@@ -7,15 +7,27 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./form-ex.component.css']
 })
 export class FormExComponent {
-  name=new FormControl('nameEx');
+
+  productForm= new FormGroup({
+
+    name:new FormControl('nameEx'),
+    desc:new FormControl('desc'),
+    imgUrl:new FormControl('imgUrl'),
+    price:new FormControl('price')
+
+  });
   namee:string="a";
-  
-  desc=new FormControl('desc');
-  imgUrl=new FormControl('imgUrl');
-  price=new FormControl('price');
 
 
   setNamee(inputt:string){
     this.namee=inputt;
+  }
+  onSubmit(){
+    console.log(this.productForm.value);
+  }
+  update(){
+    this.productForm.patchValue({
+      name:'nameNew'
+    });
   }
 }
