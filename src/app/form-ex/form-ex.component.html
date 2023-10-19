@@ -1,23 +1,25 @@
 
 <p>{{namee}}</p>
 
-<form>
+<form [formGroup]="productForm">
     <div>
         <label>Name</label>
-        <input #nameCode required [formControl]="name" (change)="setNamee(nameCode.value)">
+        <input #nameCode required formControlName="name" (change)="setNamee(nameCode.value)">
     </div>
     <div>
         <label>Desc</label>
-        <input #descCode required [formControl]="desc">
+        <input #descCode required formControlName="desc">
     </div>
     <div>
         <label>imgUrl</label>
-        <input #imgUrlCode required [formControl]="imgUrl">
+        <input #imgUrlCode required formControlName="imgUrl">
     </div>
     <div>
         <label>price</label>
-        <input #priceCode required [formControl]="price">
+        <input #priceCode required formControlName="price">
     </div>
+    <button (click)="onSubmit()">Submit</button>
+    <button (click)="update()">update</button>
 </form>
 
 
